@@ -19,8 +19,7 @@ def move(coord,direction):
 def add(coord,system,value=0):
     if (coord[0] not in system):
         system[coord[0]]={}
-    if (coord[1] not in system[coord[0]]):
-        system[coord[0]][coord[1]]=value
+    system[coord[0]][coord[1]]=value
     return system
 def moveant(system,direction,position,command):
     system[position[0]][position[1]]=int(not system[position[0]][position[1]])
@@ -36,9 +35,7 @@ def moveant(system,direction,position,command):
     position=move(position,direction)
     system=add(position,system,0)
     return [system,direction,position]
-def langton(commands,system=None,direction=(1,0),position=[0,0]):
-    if system is None:
-        system={0:{0:0}}
+def langton(commands,system={0:{0:0}},direction=(1,0),position=[0,0]):
     commands=list(commands)
     #direction=(1,0)
     #position=[0,0]
