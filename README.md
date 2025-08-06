@@ -12,3 +12,4 @@ The PHP implementation is located at el_implementation.php. It requests one POST
 [board in x,y,value format]
 ```
 You can try it with a simple form at https://harizalan.hu/extendedlangton/index.php
+Also, at https://harizalan.hu/extendedlangton/el.php, you can use it as an API, without the need of installing anything.
