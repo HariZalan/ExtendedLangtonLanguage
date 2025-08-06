@@ -8,7 +8,7 @@ function turnleft($direction) {
 	if (!isset($left[$direction[0]][$direction[1]])) {
 		die("Not a valid direction.");
 	}
-	return $left[$direction[0][$direction[1]]];
+	return $left[$direction[0]][$direction[1]];
 }
 function turnright($direction) {
 	$right=array();
@@ -19,7 +19,7 @@ function turnright($direction) {
 	if (!isset($right[$direction[0]][$direction[1]])) {
 		die("Not a valid direction.");
 	}
-	return $right[$direction[0][$direction[1]]];
+	return $right[$direction[0]][$direction[1]];
 }
 function move($coord,$direction) {
 	$coord[0]+=$direction[0];
@@ -48,7 +48,7 @@ function moveant($system,$direction,$position,$command) {
 		$direction=turnleft($direction);
 	}
 	if ($command=="r") {
-		$direction=turnright("$direction");
+		$direction=turnright($direction);
 	}
 	$position=move($position,$direction);
 	$system=add($position,$system,0);
@@ -64,5 +64,19 @@ function langton($commands,$system=array(0=>array(0=>0)),$direction=[1,0],$posit
 	}
 	return [$system,$direction,$position];
 }
-//print_r(langton("l"));
+if (isset($_POST["command"])) {
+	$command=$_POST["command"];
+	$result=langton($command);
+	$board=$result[0];
+	$direction=$result[1];
+	$current=$result[2];
+	echo $current[0].";".$current[1]."<br/>";
+	echo "(".$direction[0].";".$direction[1].") <br/>";
+	foreach ($board as $i => $v) {
+		foreach ($board[$i] as $j => $w) {
+			$val=$board[$i][$j];
+			echo "$i,$j,$val <br/>";
+		}
+	}
+}
 ?>
