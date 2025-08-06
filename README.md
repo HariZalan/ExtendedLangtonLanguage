@@ -11,4 +11,4 @@ The PHP implementation is located at el_implementation.php. It requests one POST
 (direction like (1;0))
 [board in x,y,value format]
 ```
-You can try it with a simple form at https://harizalan.hu/extendedlangton/el.php
+You can try it with a simple form at https://harizalan.hu/extendedlangton/index.php
