@@ -65,17 +65,22 @@ function langton($commands,$system=array(0=>array(0=>0)),$direction=[1,0],$posit
 	return [$system,$direction,$position];
 }
 if (isset($_POST["command"])) {
+	if (isset($_POST["machine"])) {
+		$machine="\n";
+	} else {
+		$machine="<br/>";
+	}
 	$command=$_POST["command"];
 	$result=langton($command);
 	$board=$result[0];
 	$direction=$result[1];
 	$current=$result[2];
-	echo $current[0].";".$current[1]."<br/>";
-	echo "(".$direction[0].";".$direction[1].") <br/>";
+	echo $current[0].";".$current[1].$machine;
+	echo "(".$direction[0].";".$direction[1].")".$machine;
 	foreach ($board as $i => $v) {
 		foreach ($board[$i] as $j => $w) {
 			$val=$board[$i][$j];
-			echo "$i,$j,$val <br/>";
+			echo "$i,$j,$val".$machine;
 		}
 	}
 }
